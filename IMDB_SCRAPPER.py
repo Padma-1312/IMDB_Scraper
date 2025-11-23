@@ -1,6 +1,4 @@
 import pandas as pd
-
-# Updated movie list
 movies = [
     ["RRR", "tt8178634", "https://www.imdb.com/title/tt8178634/", 8.0, 567890, "Tamil"],
     ["Dude", "tt7838252", "https://www.imdb.com/title/tt7838252/", 7.2, 123456, "Tamil"],
@@ -13,10 +11,8 @@ movies = [
 
 header = ["Movie Name", "Movie ID", "URL", "Rating", "Votes", "Language"]
 
-# 🔥 Filter only Tamil movies
 tamil_movies = [m for m in movies if m[5].lower() == "tamil"]
 
-# Print terminal table
 widths = [max(len(str(row[i])) for row in tamil_movies) for i in range(len(header))]
 print("─" * (sum(widths) + 3 * len(widths)))
 
@@ -35,9 +31,9 @@ for row in tamil_movies:
 
 print("─" * (sum(widths) + 3 * len(widths)))
 
-# Save Excel
 df = pd.DataFrame(tamil_movies, columns=header)
 excel_name = "Tamil_IMDb_Ratings.xlsx"
 df.to_excel(excel_name, index=False)
 
 print(f"\n✔ Excel saved successfully: {excel_name}")
+
